@@ -1,0 +1,31 @@
+#!/bin/bash -eu
+
+latest() {
+  local project="$1"
+  local selector='.release-header > .release-title > a'
+  curl -s https://github.com/docker/$project/releases \
+    | pup "$selector text{}" \
+    | head -1 > .tmp.$project
+}
+
+main () {
+  local projects="docker compose machine swarm"
+  trap "rm -f .tmp.*; exit" 0 1 2 3 13 15
+
+  [[ $(which pup > /dev/null; echo $?) -ne 0 ]] && \
+    echo "pup not installed (https://github.com/ericchiang/pup)" && exit 1
+
+  for project in $projects; do
+    latest $project &
+  done && wait
+
+  for project in $projects; do
+    echo '{
+      "'$project'": {
+        "latest": "'$(cat .tmp.$project)'"
+      }
+    }'
+  done | jq -s .
+}
+
+main
