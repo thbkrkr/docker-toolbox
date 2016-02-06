@@ -1,4 +1,6 @@
 #!/bin/bash -eu
+#
+# Get latest version of docker, compose, machine and swarm.
 
 latest() {
   local project="$1"
