@@ -1,9 +1,12 @@
 #!/bin/bash -eu
 #
-# Get latest version of docker, compose, machine and swarm.
+# Get the latest version of Docker, Docker Compose, Docker Machine and
+# Docker Swarm.
+#
+# > curl -sL git.io/latest-docker-version | bash
 
 latest() {
-  local project="$1"
+  declare project="$1"
   local selector='.release-header > .release-title > a'
   curl -s https://github.com/docker/$project/releases \
     | pup "$selector text{}" \
