@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 MAINTAINER Thibault Richard <thb@blurb.space>
 
 ENV DOCKER_VERSION=1.11.1 \
