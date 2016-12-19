@@ -1,8 +1,8 @@
 FROM alpine:3.4
 MAINTAINER Thibault Richard <thb@blurb.space>
 
-ENV DOCKER_VERSION=1.12.2 \
-    DOCKER_COMPOSE_VERSION=1.8.1 \
+ENV DOCKER_VERSION=1.12.5 \
+    DOCKER_COMPOSE_VERSION=1.9.0 \
     DOCKER_MACHINE_VERSION=0.8.2
 
 # Install Docker, Docker Compose and Docker Machine
