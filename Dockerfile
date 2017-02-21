@@ -8,10 +8,11 @@ ENV DOCKER_VERSION=1.13.1 \
 # Install Docker, Docker Compose and Docker Machine
 RUN apk --update \
         add curl && \
-        curl https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
+        curl -sL https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
         mv /docker/* /bin/ && chmod +x /bin/docker* \
     && \
         apk add py2-pip && \
+        pip install --upgrade pip && \
         pip install docker-compose==${DOCKER_COMPOSE_VERSION} \
     && \
         curl -sL https://github.com/docker/machine/releases/download/v${DOCKER_MACHINE_VERSION}/docker-machine-Linux-x86_64 > /usr/local/bin/docker-machine && \
