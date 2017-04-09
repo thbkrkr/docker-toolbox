@@ -6,12 +6,11 @@ ENV DOCKER_VERSION=17.03.0-ce \
     DOCKER_MACHINE_VERSION=0.10.0
 
 # Install Docker, Docker Compose and Docker Machine
-RUN apk --update \
-        add curl && \
+RUN apk add --no-cache curl && \
         curl -sL https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
         mv /docker/* /bin/ && chmod +x /bin/docker* \
     && \
-        apk add py2-pip && \
+        apk add --no-cache py2-pip && \
         pip install --upgrade pip && \
         pip install docker-compose==${DOCKER_COMPOSE_VERSION} \
     && \
