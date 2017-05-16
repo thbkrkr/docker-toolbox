@@ -8,13 +8,13 @@
 latest() {
   declare project="$1"
   local selector='.release-header > .release-title > a'
-  curl -s https://github.com/docker/$project/releases \
+  curl -s https://github.com/$project/releases \
     | pup "$selector text{}" \
-    | head -1 > .tmp.$project
+    | head -1 > .tmp.$(sed 's|/|-|' <<< $project)
 }
 
 main () {
-  local projects="docker compose machine swarm"
+  local projects="moby/moby docker/compose docker/machine docker/swarm"
   trap "rm -f .tmp.*; exit" 0 1 2 3 13 15
 
   [[ $(which pup > /dev/null; echo $?) -ne 0 ]] && \
@@ -27,7 +27,7 @@ main () {
   for project in $projects; do
     echo '{
       "'$project'": {
-        "latest": "'$(cat .tmp.$project)'"
+        "latest": "'$(cat .tmp.$(sed 's|/|-|' <<< $project))'"
       }
     }'
   done | jq -s .
