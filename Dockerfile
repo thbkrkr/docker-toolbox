@@ -2,8 +2,8 @@ FROM alpine:3.6
 MAINTAINER Thibault Richard <thb@blurb.space>
 
 ENV DOCKER_VERSION=17.06.0-ce \
-    DOCKER_COMPOSE_VERSION=1.14.0 \
-    DOCKER_MACHINE_VERSION=0.12.0
+    DOCKER_COMPOSE_VERSION=1.15.0 \
+    DOCKER_MACHINE_VERSION=0.12.2
 
 # Install Docker, Docker Compose and Docker Machine
 RUN apk add --no-cache curl && \
