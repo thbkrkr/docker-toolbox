@@ -1,13 +1,13 @@
 FROM alpine:3.6
 MAINTAINER Thibault Richard <thb@blurb.space>
 
-ENV DOCKER_VERSION=17.06.0-ce \
-    DOCKER_COMPOSE_VERSION=1.15.0 \
+ENV DOCKER_VERSION=17.07.0-ce \
+    DOCKER_COMPOSE_VERSION=1.16.1 \
     DOCKER_MACHINE_VERSION=0.12.2
 
 # Install Docker, Docker Compose and Docker Machine
 RUN apk add --no-cache curl && \
-        curl -sL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
+        curl -sL https://download.docker.com/linux/static/edge/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
         mv /docker/* /bin/ && chmod +x /bin/docker* \
     && \
         apk add --no-cache py2-pip && \
