@@ -3,7 +3,7 @@ MAINTAINER Thibault Richard <thb@blurb.space>
 
 ENV DOCKER_VERSION=17.09.0-ce \
     DOCKER_COMPOSE_VERSION=1.16.1 \
-    DOCKER_MACHINE_VERSION=0.12.2
+    DOCKER_MACHINE_VERSION=0.13.0
 
 # Install Docker, Docker Compose and Docker Machine
 RUN apk add --no-cache curl && \
