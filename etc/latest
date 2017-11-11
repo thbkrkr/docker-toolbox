@@ -14,7 +14,7 @@ latest() {
 }
 
 main () {
-  local projects="moby/moby docker/compose docker/machine docker/swarm"
+  local projects="docker/docker-ce docker/compose docker/machine docker/swarm"
   trap "rm -f .tmp.*; exit" 0 1 2 3 13 15
 
   [[ $(which pup > /dev/null; echo $?) -ne 0 ]] && \
